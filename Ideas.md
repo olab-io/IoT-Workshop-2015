@@ -1,0 +1,4 @@
+- Websockets or MQTT?
+  - http://www.esp8266.com/wiki/doku.php?id=esp_mqtt
+- Native programming / standalone ... ?
+- LUA firmware based?
