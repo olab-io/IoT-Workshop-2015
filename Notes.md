@@ -79,3 +79,50 @@ Smart power plugs
     1. If capacitors are placed in series, the total equivalent capacitance is the sum of the inverse of each capacitor (e.g. `1 / CTotal = 1 / C0 + 1 / C1 + 1 / C2 + ... + 1 / CN`.
     1.
   - What if I don't have the right resistor?
+  
+## A manual web server using AT commands
+
+
+`AT+CWLAP`  -- scans and lists all access points  
+`AT+CWJAP="SAIC-Guest","password"` -- connects to a specific access point, in this case the SAIC network. Replace password with the one we share in the workshop (let's not broadcast this publicly)  
+
+`AT+CIFSR` -- gets the device's IP address once connected  
+	
+	AT+CIFSR
+	192.168.1.135
+	OK`AT+CIOBAUD=9600` -- sets the baud rate to 9600 if set differently  
+
+`AT+CIPMODE=1`  `AT+CIPMUX=1`  
+`AT+CIPSERVER=1,80`  
+
+Using your web browser, go to the address reported by the `AT+CIFSR` command. For example, http://192.168.1.135.
+
+Note- your laptop must be on the same WiFi network as the ESP8266 device.
+
+Something like this will appear once you connect:
+
+```
++IPD,0,353:GET / HTTP/1.1
+Host: 192.168.1.135
+Connection: keep-alive
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/40.0.2214.111 Safari/537.36
+Accept-Encoding: gzip, deflate, sdch
+Accept-Language: en-US,en;q=0.8
+
+
+OK
+```
+
+Your browser will patiently wait, because the ESP8266 chip does not automatically issue a response. We have to do this manually. One important thing to note is that we've put the chip into MUX (Multiplex) mode, allowing the chip to handle multiple simultaneous connections. Because of this, every connection is assigned a unique identifier. To tell the chip which connection to send data on, we need to also tell it the ID of the connection we want to use.
+
+We can read the connection ID from the above response. Following the `+IPD` above, we see a `,0,353`. This tells us that connection ID 0 has just received a packet with a length 0f 353. If we created another connection, that number would increment to 1.
+
+To send a response to connection ID 0, issue the following commands:
+
+`AT+CIPSEND=0,10` -- Prepare the ESP chip for sending data to connection ID 0, with a length of 10 characters (yeah, we have to count it ourselves)  
+`helloworld` -- type a 10 character message  
+`AT+CIPCLOSE=0`-- close the connection. The browser will wait until the server (our ESP8266 chip in this case) closes the connection.  
+
+That's it! Your browser should now display our helloworld text.
+
