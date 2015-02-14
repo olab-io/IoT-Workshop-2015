@@ -29,3 +29,5 @@ _Don't worry, we'll provide it or find someone to share it with you if you didn'
   - Some jumper wires to hook everything up.  You can use your own or we'll provide solid core wire and wire strippers / clippers so you can make your own.
   - An [ESP8266](http://www.esp8266.com/wiki/doku.php) Wifi board.  We are using the `01` variant.  
   - A voltage regulator and other components to power the Wifi board.  We will be using an [LM317](https://en.wikipedia.org/wiki/LM317) voltage regulator, the 220Ω and 330Ω resistors to configure it for 3.125v output and the decoupling capacitors to remove input noise and output transients.
+ - Some sensors or other related projects to work on.
+ - Power strips / surge protector if you have one to share.
