@@ -23,9 +23,10 @@ _Welcome to the 2015 openLab / Media Futures Internet of Things (IoT) Workshop! 
 - [CoolTerm](http://freeware.the-meiers.org/) A really reliable serial console.  This allows you to talk directly to serial devices.
 
 ## Things You'll Need
+_Don't worry, we'll provide it if you didn't bring it ..._
 - An Arduino
   - For our demos we'll be using an Arduino UNO.  Other Arduinos will work just fine.  Arduinos with 3.3v logic (like https://www.adafruit.com/product/1500) are even better if you've got one.  Just ask your neighbor if you're not sure what you have.  If your neighbor doesn't know, ask someone else at your table.
   - A [breadboard](https://en.wikipedia.org/wiki/Breadboard).  There are lots of different kinds.  Most any will work.  Just be aware that sometimes the long tracks on the edges are not always exactly the same on all boards.
   - Some jumper wires to hook everything up.  You can use your own or we'll provide solid core wire and wire strippers / clippers so you can make your own.
-  - An [ESP8266](http://www.esp8266.com/wiki/doku.php) Wifi board.
+  - An [ESP8266](http://www.esp8266.com/wiki/doku.php) Wifi board.  We are using the `01` variant.  
   - A voltage regulator and other components to power the Wifi board.  We will be using an [LM317](https://en.wikipedia.org/wiki/LM317) voltage regulator, the 220Ω and 330Ω resistors to configure it for 3.125v output and the decoupling capacitors to remove input noise and output transients.
