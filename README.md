@@ -17,13 +17,12 @@ _Welcome to the 2015 openLab / Media Futures Internet of Things (IoT) Workshop! 
 - 13:45 - 16:30 Make it!
 - 16:30 - 17:00 Show and tell.
 
-## Download + Install
-- [Arduino](http://arduino.cc/) The primary microcontroller programming environment we'll be using.
-- [Fritzing](http://fritzing.org/home/) A great program for designing,  visualizing and sharing circuits.
-- [CoolTerm](http://freeware.the-meiers.org/) A really reliable serial console.  This allows you to talk directly to serial devices.
-
 ## Things You'll Need
-_Don't worry, we'll provide it if you didn't bring it ..._
+_Don't worry, we'll provide it or find someone to share it with you if you didn't bring it ..._
+- A laptop with the following software:
+    - [Arduino](http://arduino.cc/) The primary microcontroller programming environment we'll be using.
+    - [Fritzing](http://fritzing.org/home/) A great program for designing,  visualizing and sharing circuits.
+    - [CoolTerm](http://freeware.the-meiers.org/) A really reliable serial console.  This allows you to talk directly to serial devices.
 - An Arduino
   - For our demos we'll be using an Arduino UNO.  Other Arduinos will work just fine.  Arduinos with 3.3v logic (like https://www.adafruit.com/product/1500) are even better if you've got one.  Just ask your neighbor if you're not sure what you have.  If your neighbor doesn't know, ask someone else at your table.
   - A [breadboard](https://en.wikipedia.org/wiki/Breadboard).  There are lots of different kinds.  Most any will work.  Just be aware that sometimes the long tracks on the edges are not always exactly the same on all boards.
