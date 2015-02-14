@@ -82,6 +82,10 @@ Smart power plugs
   
 ## A manual web server using AT commands
 
+This short guide shows how we can manually serve a simple web page without programming anything, by simply issuing AT commands.
+
+
+First, we need to join an existing network. These chips can act as a WiFi base station, but we'll connect to an existing network for this example.
 
 `AT+CWLAP`  -- scans and lists all access points  
 `AT+CWJAP="SAIC-Guest","password"` -- connects to a specific access point, in this case the SAIC network. Replace password with the one we share in the workshop (let's not broadcast this publicly)  
@@ -90,12 +94,13 @@ Smart power plugs
 	
 	AT+CIFSR
 	192.168.1.135
-	OK`AT+CIOBAUD=9600` -- sets the baud rate to 9600 if set differently  
-
-`AT+CIPMODE=1`  `AT+CIPMUX=1`  
-`AT+CIPSERVER=1,80`  
+	OK
+	
+We are now connected. Next, we can to start up a webserver.
+`AT+CIPMUX=1` -- enable multiplex mode (this is required to start a server)
+`AT+CIPSERVER=1,80`  -- start the server on port 80, the default port for a web server.
 
-Using your web browser, go to the address reported by the `AT+CIFSR` command. For example, http://192.168.1.135.
+Using your computer's web browser, go to the address reported by the `AT+CIFSR` command. For example, http://192.168.1.135.
 
 Note- your laptop must be on the same WiFi network as the ESP8266 device.
 
