@@ -55,7 +55,7 @@
   - Max current consumption when transmitting 200-300 mA.
   - 32bit processor
   - 16 GPIO pins
-  -
+
 ## Applications
 Smart power plugs
 - Home automation
@@ -89,7 +89,7 @@ Smart power plugs
     1. If capacitors are placed in series, the total equivalent capacitance is the sum of the inverse of each capacitor (e.g. `1 / CTotal = 1 / C0 + 1 / C1 + 1 / C2 + ... + 1 / CN`.
     1.
   - What if I don't have the right resistor?
-  
+
 ## A manual web server using AT commands
 
 This short guide shows how we can manually serve a simple web page without programming anything, by simply issuing AT commands.
@@ -101,11 +101,11 @@ First, we need to join an existing network. These chips can act as a WiFi base s
 `AT+CWJAP="SAIC-Guest","password"` -- connects to a specific access point, in this case the SAIC network. Replace password with the one we share in the workshop (let's not broadcast this publicly)  
 
 `AT+CIFSR` -- gets the device's IP address once connected  
-	
+
 	AT+CIFSR
 	192.168.1.135
 	OK
-	
+
 We are now connected. Next, we can to start up a webserver.
 `AT+CIPMUX=1` -- enable multiplex mode (this is required to start a server)
 `AT+CIPSERVER=1,80`  -- start the server on port 80, the default port for a web server.
@@ -140,4 +140,3 @@ To send a response to connection ID 0, issue the following commands:
 `AT+CIPCLOSE=0`-- close the connection. The browser will wait until the server (our ESP8266 chip in this case) closes the connection.  
 
 That's it! Your browser should now display our helloworld text.
-
