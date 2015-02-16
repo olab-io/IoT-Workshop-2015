@@ -69,6 +69,16 @@ Smart power plugs
 - Security ID tags
 - Wi-Fi position system beacons
 
+## Links
+- Sensor Networks
+ - http://roximity.com/
+ - https://en.wikipedia.org/wiki/IBeacon
+- Ubicomp
+ - http://www.ubiq.com/weiser/calmtech/calmtech.htm
+ - [Map Bag](http://www.joshbillions.org/post/3974357210/mapbag)
+- Examples
+ - http://postscapes.com/wifi-light-socket-spark
+ - http://www2.meethue.com/en-us/
 
 ## Tips
 - Substitutions
@@ -96,7 +106,7 @@ First, we need to join an existing network. These chips can act as a WiFi base s
 	192.168.1.135
 	OK
 	
-We are now connected. Next, we can to start up a webserver.
+We are now connected. Next, we can to start up a webserver.
 `AT+CIPMUX=1` -- enable multiplex mode (this is required to start a server)
 `AT+CIPSERVER=1,80`  -- start the server on port 80, the default port for a web server.
 
@@ -129,5 +139,5 @@ To send a response to connection ID 0, issue the following commands:
 `helloworld` -- type a 10 character message  
 `AT+CIPCLOSE=0`-- close the connection. The browser will wait until the server (our ESP8266 chip in this case) closes the connection.  
 
-That's it! Your browser should now display our helloworld text.
+That's it! Your browser should now display our helloworld text.
 
