@@ -87,13 +87,10 @@ Smart power plugs
     1. Make sure you use the same temperature rating or higher.
     1. If capacitors are placed in parallel, the total equivalent capacitance is the sum of all (e.g. `CTotal = C0 + C1 + C2 + ... + CN`).
     1. If capacitors are placed in series, the total equivalent capacitance is the sum of the inverse of each capacitor (e.g. `1 / CTotal = 1 / C0 + 1 / C1 + 1 / C2 + ... + 1 / CN`.
-    1.
-  - What if I don't have the right resistor?
 
 ## A manual web server using AT commands
 
 This short guide shows how we can manually serve a simple web page without programming anything, by simply issuing AT commands.
-
 
 First, we need to join an existing network. These chips can act as a WiFi base station, but we'll connect to an existing network for this example.
 
