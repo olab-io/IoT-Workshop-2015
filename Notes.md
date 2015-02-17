@@ -79,6 +79,7 @@ Smart power plugs
 - Examples
  - http://postscapes.com/wifi-light-socket-spark
  - http://www2.meethue.com/en-us/
+ - http://hackaday.com/2015/02/17/mapping-wifi-signals-in-3-dimensions/
 
 ## Tips
 - Substitutions
@@ -137,3 +138,41 @@ To send a response to connection ID 0, issue the following commands:
 `AT+CIPCLOSE=0`-- close the connection. The browser will wait until the server (our ESP8266 chip in this case) closes the connection.  
 
 That's it! Your browser should now display our helloworld text.
+
+## Flashing the ESP8266 with custom firmware
+
+Setup steps:
+
+First, connect the Arduino to the ESP8266 in passthrough mode:
+
+* connect Arduino's RST to GND, putting it in passthrough mode
+* Connect 3.3v power and GND to ESP
+* Connect ESP TXD to Arduino TX
+* Connect ESP RXD to Arduino RX
+
+The chip defaults to 9600, which is slow, so it's good to change it to 57600. With a terminal program, connect to the ESP8266 and run the AT command:
+
+`AT+CIOBAUD=57600`
+
+This change takes effect immediately, so to issue further commands to the chip, you'll have to also change your terminal's baud rate to 57600.
+
+After you've changed the chip's baud rate, put the ESP8266 in bootloader mode by connecting the chip's GPIO0 to GND. (illustration needed here)
+
+GPIO0 must be pulled low at boot time for bootloader mode to be enabled. Now that we've connected GPIO0 to GND, reboot the ESP8266 by disconnecting and re-connecting its power.
+
+
+Now, let's test the connection to the chip by dumping its memory: (let's change this to a quicker, better test)
+
+`./esptool.py -p /dev/tty.usbserial-A600afrj -b 57600  dump_mem 0x40000000 65536 iram0.bin`
+
+
+Once this is set, programming can be done:
+(assuming the two firmware files are in firmware/0x00000.bin and firmware/0x40000.bin)
+
+`./esptool.py -p /dev/tty.usbserial-A600afrj -b 57600 write_flash 0x00000 firmware/0x00000.bin 0x40000 firmware/0x40000.bin`
+
+
+##Troubleshooting steps for common problems
+
+####My ESP8266 reboots when I run `AT+CWLAP` or another command
+This may be an issue with the power supply. Try using a different power source (such as a two AA batteries in series) to see if the problem persists.
